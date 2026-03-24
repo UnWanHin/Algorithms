@@ -1,0 +1,1 @@
+Failed to launch CMake executable '\usr\bin\cmake': Cannot connect to the Docker daemon at npipe:////./pipe/docker_engine. Is the docker daemon running? Configure Disable profile
