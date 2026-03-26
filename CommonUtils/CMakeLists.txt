@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.22)
 project(CommonUtils)
+# CMake 3.30+ removes FindBoost under CMP0167 NEW.
+# Keep OLD here to preserve current FindBoost-based behavior.
+if(POLICY CMP0167)
+    cmake_policy(SET CMP0167 OLD)
+endif()
 # 设置项目语言和标准
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
