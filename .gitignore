@@ -1,0 +1,17 @@
+# build output
+build/
+Build/
+out/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+*.dir/
+
+# install output
+install/
+_install/
+
+# logs
+logs/
+log/
+*.log
