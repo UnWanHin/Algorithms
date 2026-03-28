@@ -1,6 +1,6 @@
 # Project/Algorithms/CMakeLists.txt  ← 終極無敵版，直接貼！
 cmake_minimum_required(VERSION 3.22)
-project(CppLearning LANGUAGES CXX)
+project(Fuking_algo LANGUAGES CXX)
 
 # 1. 自動處理 include 目錄（不存在也不崩）
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
