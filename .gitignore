@@ -6,6 +6,7 @@ cmake-build-*/
 CMakeFiles/
 CMakeCache.txt
 *.dir/
+cmake-build-debug/
 
 # install output
 install/

@@ -1,4 +1,13 @@
 #include "LinkList.hpp"
+//output link listed
+void PrintList(Node *head) {
+    Node *current = head;
+    while (current!=nullptr) {
+        std::cout<<current->element<<" ";
+        current = current->next;
+    }
+    std::cout<<std::endl;
+}
 //input link listed
 Node* InputList() {
     Node *head = nullptr;
@@ -59,15 +68,6 @@ Node *MergeLinkListed(Node *LinkList1, Node *LinkList2) {
     tail->next = remaining;
     return head;
 }
-//output link listed
-void PrintList(Node *head) {
-    Node *current = head;
-    while (current!=nullptr) {
-        std::cout<<current->element<<" ";
-        current = current->next;
-    }
-    std::cout<<std::endl;
-}
 //Merge k sorted linked listed
 Node* MergekList(std::vector<Node*> &lists, int left , int right) {
     if (lists.empty() || left > right) {
@@ -116,7 +116,7 @@ Node* PartitionList(Node* head) {
     less_tail->next = large_dummy.next;
     return less_dummy.next;
 }
-//fast and slow pointer
+//fast and slow pointer for const distance
 Node* RemoveNthFromEnd(Node* head, int n) {
     Node* fast = head;
     Node* slow = head;
@@ -133,6 +133,76 @@ Node* RemoveNthFromEnd(Node* head, int n) {
     return head;
 }
 
+Node* MakeCircleList(Node* head, int n) {
+    if (head == nullptr) return head;
+    Node* current = head;
+    Node* tail = head;
+    int distance{1};
+    while (tail->next != nullptr) {
+        tail = tail->next;
+        distance++;
+    }
+    if (distance < n ) {
+        std::cout<<"Distance is less than n, please run again"<<std::endl;
+        return head;
+    }
+    for ( int i = 0 ; i < n-1 ; i++) {
+        current = current->next;
+    }
+    tail->next = current;
+
+    return head;
+}
+
+Node* InputCircleList(int n) {
+    Node* head = InputList();
+    head = MakeCircleList(head, n);
+    return head;
+}
+
+std::pair<int, int> DetectCycle(Node *head) {
+    if (head == nullptr) return std::make_pair(0, 0);
+    std::pair<int, int> DetectCycle{};
+    Node* fast = head;
+    Node* slow = head;
+    int counter{1};
+    do {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    while (fast != slow);
+
+    std::cout<<"current fast pointer position : "<<fast->element<<std::endl;
+    std::cout<<"current slow pointer position : "<<slow->element<<std::endl;
+    Node* start = head;
+    while (start != slow) {
+        start = start->next;
+        slow = slow->next;
+        counter++;
+    }
+    DetectCycle.first = start->element;
+    DetectCycle.second = counter;
+
+    return DetectCycle;
+}
+
+//fast and slow pointer for different velocity
+std::pair<int,int> MiddleNode(Node* head) {
+    if (head == nullptr) return std::make_pair(0, 0); //remind to check whether head is nullptr
+    std::pair<int,int> middle_node;
+    Node* fast = head;
+    Node* slow = head;
+    int counter{1};
+    while (fast != nullptr && fast->next != nullptr){
+        fast = fast->next->next;
+        slow = slow->next;
+        counter++;
+    }
+    middle_node.first = slow->element;
+    middle_node.second = counter;
+
+    return middle_node;
+}
 //
 // Created by unwan on 29/3/2026.
 //
