@@ -160,6 +160,15 @@ Node* InputCircleList(int n) {
     return head;
 }
 
+Node* LinkedTwoList(Node* FrontList,Node* BackList){
+    Node* current = FrontList;
+    while (current->next != nullptr) {
+        current = current->next;
+    }
+    current->next = BackList;
+    return FrontList;
+}
+
 std::pair<int, int> DetectCycle(Node *head) {
     if (head == nullptr) return std::make_pair(0, 0);
     std::pair<int, int> DetectCycle{};
@@ -186,6 +195,25 @@ std::pair<int, int> DetectCycle(Node *head) {
     return DetectCycle;
 }
 
+std::pair<int, Node*> CheckWhetherIntersect(Node* headA, Node* headB) {
+    if (headA == nullptr || headB == nullptr) return std::make_pair(0, nullptr);
+    Node* LinkListA = headA;
+    Node* LinkListB = headB;
+    int save_element{};
+    while (LinkListA != LinkListB) {
+        if (LinkListA == nullptr) {
+            LinkListA = headB;
+        }
+        if (LinkListB == nullptr) {
+            LinkListB = headA;
+        }
+        LinkListA = LinkListA->next;
+        LinkListB = LinkListB->next;
+    }
+    save_element=LinkListA->element;
+
+    return std::make_pair(save_element, LinkListA);
+}
 //fast and slow pointer for different velocity
 std::pair<int,int> MiddleNode(Node* head) {
     if (head == nullptr) return std::make_pair(0, 0); //remind to check whether head is nullptr
