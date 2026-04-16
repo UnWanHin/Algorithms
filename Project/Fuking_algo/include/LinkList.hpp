@@ -26,6 +26,20 @@ Node* MakeCircleList(Node* head, int n);
 Node* InputCircleList(int n);
 
 Node* LinkedTwoList(Node* FrontList,Node* BackList);
+
+Node* RemoveDuplicatesElement(Node* head);
+
+Node* RemoveElements(Node* head, int n);
+
+Node* MergeListAtoB(Node* headA, Node* headB);
+
+Node* GetTail(Node* head);
+
+std::pair<int, int> TwoSumOfLinkList(std::vector<int> &numbers, int n);
+
+//cut 'n' element to two list
+std::pair<Node*, Node*> CutElement(Node* head, int n);
+
 //基於數學邏輯的
 std::pair<int, Node*> CheckWhetherIntersect(Node* headA, Node* headB);
 
@@ -33,6 +47,9 @@ std::pair<int, int> DetectCycle(Node* head);
 
 //定速指針
 std::pair<int, int> MiddleNode(Node* head);
+
+
+
 
 void PrintList(Node* head);
 

@@ -169,6 +169,80 @@ Node* LinkedTwoList(Node* FrontList,Node* BackList){
     return FrontList;
 }
 
+Node* RemoveDuplicatesElement(Node *head) {
+    Node* current = head;
+    int count{1};
+    while (current != nullptr && current->next != nullptr) {
+        if (current->element == current->next->element) {
+            current->next = current->next->next;
+        } else {
+            current = current->next;
+            count++;
+        }
+    }
+    std::cout<<"count: "<<count<<std::endl;
+    return head;
+}
+//Please do the afterline work every project
+Node* RemoveElements(Node *head, int n) {
+    Node* current = head;
+    while (current != nullptr) {
+        while (current->next->element == n) {
+            if (current->next->next==nullptr) {
+                current->next = nullptr;
+                break;
+            }
+            current->next = current->next->next;
+        }
+        current = current ->next;
+    }
+    return head;
+}
+//Only Merge, No Sorted
+Node* MergeListAtoB(Node* headA,Node* headB) {
+    if (headA == nullptr || headB == nullptr) {
+        return headA == nullptr ? headB : headA;
+    }
+    Node* current = headA;
+    while (current->next != nullptr) {
+        current = current->next;
+    }
+    current->next = headB;
+    return headA    ;
+}
+
+Node *GetTail(Node *head) {
+    Node* tail = head;
+    while (tail->next!=nullptr) {
+        tail = tail->next;
+    }
+    return tail;
+}
+
+std::pair<Node*,Node*> CutElement(Node *head, int n) {
+    Node keepDummy{};
+    Node cutDummy{};
+    Node* keepTail = &keepDummy;
+    Node* cutTail = &cutDummy;
+
+    Node* cur = head;
+    while (cur != nullptr) {
+        Node* next = cur->next;
+        cur->next = nullptr; // 先斷開，避免舊鏈影響
+
+        if (cur->element == n) {
+            cutTail->next = cur;
+            cutTail = cur;
+        } else {
+            keepTail->next = cur;
+            keepTail = cur;
+        }
+        cur = next;
+    }
+
+    return {keepDummy.next, cutDummy.next};
+}
+
 std::pair<int, int> DetectCycle(Node *head) {
     if (head == nullptr) return std::make_pair(0, 0);
     std::pair<int, int> DetectCycle{};
