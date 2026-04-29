@@ -12,6 +12,8 @@ std::vector<int> InputInt() {
     return result;
 }
 
+
+
 std::vector<int> PrintInt(std::vector<int> & numbers) {
     for (auto & i: numbers) {
         std::cout<<i<<" ";

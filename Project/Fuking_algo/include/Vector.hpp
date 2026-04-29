@@ -4,8 +4,10 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <string>
 
 std::vector<int> InputInt();
+
 
 std::vector<int> PrintInt(std::vector<int> & numbers);
 
