@@ -12,6 +12,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+
+function(commonutils_configure_test_target module_name target_name)
+    set_target_properties(${target_name} PROPERTIES
+        FOLDER "CommonUtils/${module_name}/Tests"
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/CommonUtils/${module_name}/Exes"
+    )
+endfunction()
 # 添加依赖
 find_package(SQLite3 QUIET)
 find_package(nlohmann_json QUIET)

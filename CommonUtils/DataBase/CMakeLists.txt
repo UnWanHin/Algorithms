@@ -21,7 +21,7 @@ target_include_directories(UtilsDataBase
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 target_link_libraries(UtilsDataBase 
-    PUBLIC SQLite::SQLite3
+    PUBLIC SQLite3::SQLite3
 )
 
 file(GLOB TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/test/*.cpp") 
@@ -31,4 +31,5 @@ foreach(test_source ${TEST_SOURCES})
     set(EXECUTABLE_NAME "DataBase_${TEST_NAME}")
     add_executable(${EXECUTABLE_NAME} ${test_source})
     target_link_libraries(${EXECUTABLE_NAME} PRIVATE Utils::DataBase)
+    commonutils_configure_test_target("DataBase" ${EXECUTABLE_NAME})
 endforeach()

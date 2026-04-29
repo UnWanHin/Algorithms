@@ -59,7 +59,7 @@ foreach(src ${SOURCES})
             endif()
             set_target_properties(${exe_name} PROPERTIES
                     FOLDER "${PROJECT_NAME}/Exes"
-                    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${PROJECT_NAME}
+                    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${PROJECT_NAME}/Exes
             )
         endif()
     endif()
@@ -71,7 +71,10 @@ if(TEST_SOURCES)
         get_filename_component(name ${test_src} NAME_WE)
         add_executable("${PROJECT_NAME}_test_${name}" ${test_src})
         target_link_libraries("${PROJECT_NAME}_test_${name}" PRIVATE ${PROJECT_NAME})
-        set_target_properties("${PROJECT_NAME}_test_${name}" PROPERTIES FOLDER "${PROJECT_NAME}/Tests")
+        set_target_properties("${PROJECT_NAME}_test_${name}" PROPERTIES
+                FOLDER "${PROJECT_NAME}/Tests"
+                RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${PROJECT_NAME}/Tests
+        )
     endforeach()
 endif()
 
